@@ -16,7 +16,7 @@ app.use(morgan('combined'));
 
 // CORS configuration
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  // origin: process.env.FRONTEND_URL || 'http://localhost:5173',
   credentials: true,
   optionsSuccessStatus: 200
 };
@@ -44,7 +44,7 @@ app.use('/api/contact', limiter);
 // Email transporter configuration
 const createTransporter = () => {
   // Gmail configuration (you can change this to other providers)
-  return nodemailer.createTransporter({
+  return nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user: process.env.EMAIL_USER,
@@ -279,7 +279,7 @@ app.use((error, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`🚀 Portfolio backend server running on port ${PORT}`);
   console.log(`📧 Email service configured for: ${process.env.RECIPIENT_EMAIL || 'rohitverma27305@gmail.com'}`);
-  console.log(`🌐 CORS enabled for: ${process.env.FRONTEND_URL || 'http://localhost:3000'}`);
+  console.log(`🌐 CORS enabled for: ${process.env.FRONTEND_URL || 'http://localhost:5173'}`);
 });
 
 module.exports = app;
